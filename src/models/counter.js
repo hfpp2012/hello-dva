@@ -15,15 +15,15 @@ export default {
       };
     },
 
-    onClick({ dispatch }) {
-      document.addEventListener('click', () => {
-        dispatch({ type: 'add' });
-      })
-    },
+    // onClick({ dispatch }) {
+    //   document.addEventListener('click', () => {
+    //     dispatch({ type: 'add' });
+    //   })
+    // },
 
     setupHistory({ dispatch, history }) {
       history.listen((location) => {
-        console.log(location);
+        // console.log(location);
         // if (location.pathname === '/counter') {
         //   dispatch({ type: 'add' });
         // }
@@ -61,15 +61,15 @@ export default {
       // const counter = yield select(_ => _.counter)
       // console.log(counter);
       const { counter } = yield select(_ => _);
-      console.log(counter);
+      // console.log(counter);
       yield call(delay, 1000);
       yield put({ type: 'add' });
-      yield put(routerRedux.push({
-        pathname: '/',
-        search: queryString.stringify({
-          from: 'rails365'
-        })
-      }));
+      // yield put(routerRedux.push({
+      //   pathname: '/',
+      //   search: queryString.stringify({
+      //     from: 'rails365'
+      //   })
+      // }));
     },
   },
 }

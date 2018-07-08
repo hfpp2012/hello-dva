@@ -19,4 +19,4 @@ app.router(require('./router').default);
 
 // 5. Start
 app.start('#root');
-console.dir(app);
+// console.dir(app);
