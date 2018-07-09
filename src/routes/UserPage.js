@@ -2,8 +2,10 @@ import React from 'react';
 import { connect } from 'dva';
 
 const User = (props) => {
-  const { isFetching, error, user } = props.user;
+  console.log(props.loading.global);
+  const { error, user } = props.user;
   const { dispatch } = props;
+  let isFetching = props.loading.effects["user/fetch"]
 
   let data;
 
@@ -19,6 +21,7 @@ const User = (props) => {
     <div>
       <h1>{ data }</h1>
       <button onClick={ () => { dispatch({ type: 'user/fetch' }) } }>get user</button>
+      <button onClick={ () => { dispatch({ type: 'user/fetch/start' }) } }>get user start</button>
     </div>
   )
 }
@@ -29,7 +32,8 @@ User.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    loading: state.loading
   };
 };
 
