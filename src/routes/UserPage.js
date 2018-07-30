@@ -20,7 +20,7 @@ const User = (props) => {
     <div>
       <h1>{ data }</h1>
       <button onClick={ () => { dispatch({ type: 'user/fetch' }) } }>get user</button>
-      <button onClick={ () => { dispatch({ type: 'user/fetch/start' }) } }>get user start</button>
+      <button onClick={ () => { dispatch({ type: 'SHOW' }) } }>get user start</button>
     </div>
   )
 }

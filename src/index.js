@@ -20,10 +20,33 @@ const error = store => next => action => {
   }
 };
 
+const extraReducers = {
+  form(state = false, action) {
+    switch (action.type) {
+      case 'SHOW':
+        return true;
+      case 'HIDE':
+        return false;
+      default:
+        return state
+    }
+  }
+}
+
+const onEffect = (effect, { put }, model, key) => {
+  return function*(...args) {
+    yield put({ type: 'SHOW' });
+    yield effect(...args);
+    yield put({ type: 'HIDE' });
+  };
+}
+
 // 1. Initialize
 const app = dva({
   history: createHistory(),
-  onAction: [logger, error]
+  onAction: [logger, error],
+  extraReducers: extraReducers,
+  onEffect: onEffect
 });
 
 // 2. Plugins
